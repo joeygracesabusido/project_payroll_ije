@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    container_name: admin_apps
+    command: uvicorn apps.main:app --host 0.0.0.0 --port 2000 --reload
+    ports:
+      - "2000:2000"
+
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+    volumes:
+      - .:/code
+    environment:
+      - PYTHONUNBUFFERED=1
+
