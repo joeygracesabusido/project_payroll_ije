@@ -1,0 +1,6 @@
+name = "project-payroll"
+type = "javascript" # or "webpack" depending on your setup
+account_id = "your-cloudflare-account-id"
+workers_dev = true
+compatibility_date = "2024-11-05"
+
