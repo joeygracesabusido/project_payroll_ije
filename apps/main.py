@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import PlainTextResponse
 
 
-from fastapi.staticfiles import StaticFil
+#from fastapi.staticfiles import StaticFil
 
 from apps.routes.graphql import graphql_app
 app = FastAPI()
