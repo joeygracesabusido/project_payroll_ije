@@ -9,3 +9,4 @@ pymongo
 python-multipart
 strawberry-graphql
 gunicorn
+sqlmodel
