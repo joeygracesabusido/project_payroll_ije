@@ -137,6 +137,7 @@ def sign_up(data: SignUpModel):
         "username": data.username,
         "password": get_password_hash(data.password),
         "status": data.status,
+        "role": data.role,
         "created": data.created
     }
     mydb.login.insert_one(dataInsert)

@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     console.log("DOM fully loaded and parsed");
 
     const login = async () => {
         var username = document.querySelector('#username').value;
         var password = document.querySelector('#password').value;
+        let alert;
 
         const search_url = `/api-login/?username1=${username}&password1=${password}`;
 
@@ -15,18 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data);
 
             if (response.ok) {
-                // console.log(data.user);
-                localStorage.setItem('user', JSON.stringify(data.user));
-                window.location.assign("/dashboard/");
+                // Login successful
+                console.log("Login successful");
+                // document.querySelector('#alert').innerHTML = 'Login successful';
+                window.location.assign("/dashboard/")
+                // Redirect or perform any other actions on successful login
+            } else if (response.status === 401) {
+                // Incorrect password or username
+                document.querySelector('#alert').innerHTML = 'Incorrect Password or Username';
             } else if (response.status === 400) {
                 // Incorrect password or username
-                document.querySelector('#alert').innerHTML = 'Password & Username did not match';
-            } else if (response.status === 401) {
-                // Username not registered
-                document.querySelector('#alert').innerHTML = 'Username is not registered';
+                document.querySelector('#alert').innerHTML = 'Unauthorized';
             } else if (response.status === 500) {
-                // Server error
-                document.querySelector('#alert').innerHTML = 'Server error. Please try again later.';
+                // Incorrect password
+                document.querySelector('#alert').innerHTML = 'Incorrect Password';
             } else {
                 // Other errors
                 document.querySelector('#alert').innerHTML = 'Error: ' + response.statusText;
@@ -44,8 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         login();
     });
 
+    // Add event listener for the Enter key on the password field
     document.querySelector('#password').addEventListener("keydown", function(event) {
-        console.log("Key pressed: " + event.key);
+        console.log("Key pressed: " + event.key); // Log the key pressed
         if (event.key === "Enter") {
             console.log("Enter key pressed");
             login();
