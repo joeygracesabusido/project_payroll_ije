@@ -3,7 +3,7 @@ from typing import Optional,List, Dict
 
 from datetime import date, datetime
 
-from apps.views.accounting.journal_entry_views import JournalEntryViews
+
 
 
 

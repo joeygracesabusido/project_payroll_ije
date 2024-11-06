@@ -2,8 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import PlainTextResponse
 
+from apps.routes.admin import api
+from apps.routes.login import api_login
 
-#from fastapi.staticfiles import StaticFil
+
+from fastapi.staticfiles import StaticFiles
 
 from apps.routes.graphql import graphql_app
 app = FastAPI()
@@ -20,8 +23,8 @@ app.add_middleware(
 
 
 
-#app.include_router(api, tags=["admin"])
-
+app.include_router(api, tags=["admin"])
+app.include_router(api, tags=['Login'])
 
 
 
